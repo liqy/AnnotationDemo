@@ -36,30 +36,33 @@ public class MainActivity extends AppCompatActivity {
         invokeAnnotation();
         invokeReflect();
 
-
+//日考测试
         MyShape<Circle> circleMyShape = new MyShape<>();
         Circle circle = new Circle();
-        circleMyShape.mShape = circle;
+        circleMyShape.mShape = circle;//初始化
 
-        Class c = circleMyShape.getClass();
 
+        Class c = circleMyShape.getClass();//获取Class
+
+        //获取注解
         ShapeName shapeName = (ShapeName) c.getAnnotation(ShapeName.class);
 
         Log.d(getLocalClassName(), shapeName.value());
 
+        //获取所有方法
         Method[] methods = c.getDeclaredMethods();
 
-        for (Method method : methods) {
+        for (Method method : methods) {//遍历方法
             try {
                 //TODO 怎么处理
-                method.invoke(circleMyShape);
+                method.invoke(circleMyShape);//调用方法
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-
+//日考测试
 
         Test test = new Test();
         test.test();
